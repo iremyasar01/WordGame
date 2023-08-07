@@ -5,6 +5,7 @@ using TMPro;
 
 public class Gm : MonoBehaviour
 {
+    public TextMeshPro SpelledWordTmPro;
     public static string CurrentWord;
     public Transform SpelledWord;
     public KeyCode RMB; //rightmost button
@@ -127,27 +128,22 @@ public class Gm : MonoBehaviour
 
     void Start()
     {
+        SpelledWordTmPro = SpelledWord.GetComponent<TextMeshPro>();
         BottomL1Obj.GetComponent<TextMeshPro>().text = AvailLetter1[0];
         BottomL2Obj.GetComponent<TextMeshPro>().text = AvailLetter2[0];
         BottomL3Obj.GetComponent<TextMeshPro>().text = AvailLetter3[0];
         BottomL4Obj.GetComponent<TextMeshPro>().text = AvailLetter4[0];
         BottomL5Obj.GetComponent<TextMeshPro>().text = AvailLetter5[0];
         BottomL6Obj.GetComponent<TextMeshPro>().text = AvailLetter6[0];
-
-        /*
-        Bottom21Obj.GetComponent<TextMeshPro>().text = AvailLetter3[0];
-        Bottom22Obj.GetComponent<TextMeshPro>().text = AvailLetter2[0];
-        Bottom23Obj.GetComponent<TextMeshPro>().text = AvailLetter5[0];
-        Bottom24Obj.GetComponent<TextMeshPro>().text = AvailLetter4[0];
-        */
-        
+    
 
     }
 
+    
 
     void Update()
     {
-        SpelledWord.GetComponent<TextMeshPro>().text = CurrentWord;
+       SpelledWordTmPro.text = CurrentWord;
 
         if (Input.GetKeyDown(RMB))
         {
@@ -158,55 +154,78 @@ public class Gm : MonoBehaviour
         
         if (WordLen == 4)
         {
-            if (CurrentWord == wordl4l) //|| CurrentWord == word4l2//
+            if (CurrentWord == wordl4l) 
             {
                 Debug.Log("Correct 4 letter");
+              
 
                 LetterH2.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE2.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA2.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterT2.GetComponent<TextMeshPro>().text = SelectLetter[4];
+               
 
 
             }
             else if(CurrentWord==word4l2)
             {
+                Debug.Log("Correct 4 letter");
+              
+
                 LetterH3.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterA3.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterT3.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE3.GetComponent<TextMeshPro>().text = SelectLetter[4];
+                
 
             }
             else if (CurrentWord == word4l3)
             {
+                Debug.Log("Correct 4 letter");
+               
+
                 LetterH4.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE4.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA4.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterR4.GetComponent<TextMeshPro>().text = SelectLetter[4];
+        
             }
             else if (CurrentWord == word4l4)
             {
+                Debug.Log("Correct 4 letter");
+               
+
                 LetterH5.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE5.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA5.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterL5.GetComponent<TextMeshPro>().text = SelectLetter[4];
+         
             }
             else if (CurrentWord == word4l5)
             {
+                Debug.Log("Correct 4 letter");
+                
+
                 LetterL6.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterA6.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterT6.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE6.GetComponent<TextMeshPro>().text = SelectLetter[4];
+              
             }
             else if(CurrentWord== word4L6)
             {
+                Debug.Log("Correct 4 letter");
+
                 LetterR7.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterA7.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterT7.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE7.GetComponent<TextMeshPro>().text = SelectLetter[4];
+            
             }
             else if (CurrentWord == word4l7)
             {
+                Debug.Log("Correct 4 letter");
+
                 LetterT8.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterA8.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterL8.GetComponent<TextMeshPro>().text = SelectLetter[3];
@@ -217,6 +236,8 @@ public class Gm : MonoBehaviour
             else
             {
                 Debug.Log("Wrong 4 letter");
+
+              
             }
 
         }
@@ -225,21 +246,21 @@ public class Gm : MonoBehaviour
             if (CurrentWord == word5l)
             {
                 Debug.Log("Correct 5 letter");
+             
 
-                
 
                 LetterH.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterR.GetComponent<TextMeshPro>().text = SelectLetter[4];
                 LetterT.GetComponent<TextMeshPro>().text = SelectLetter[5];
-              
-
 
             }
             else
             {
                 Debug.Log("Wrong 5 letter");
+               
+
             }
         }
     }
