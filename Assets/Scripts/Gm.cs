@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Gm : MonoBehaviour
 {
+ 
+    public int CorrectWord = 0;
+    public int TotalWord = 8;
+    public static Gm Instance;
+    public GameObject NextText;
     public TextMeshPro SpelledWordTmPro;
     public static string CurrentWord;
     public Transform SpelledWord;
@@ -121,13 +127,25 @@ public class Gm : MonoBehaviour
     public string word4L6 = "RATE";
     public string word4l7 = "TALE";
 
- 
+
     public static List<string> SelectLetter = new List<string>() { " ", " ", " ", " ", " ", " " };
     public static int LetterNum = 0;
-  
+
+    public static List<string> CorrectWordsList = new List<string>();
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
 
     void Start()
     {
+        NextText.SetActive(false);
+     
+
         SpelledWordTmPro = SpelledWord.GetComponent<TextMeshPro>();
         BottomL1Obj.GetComponent<TextMeshPro>().text = AvailLetter1[0];
         BottomL2Obj.GetComponent<TextMeshPro>().text = AvailLetter2[0];
@@ -135,84 +153,99 @@ public class Gm : MonoBehaviour
         BottomL4Obj.GetComponent<TextMeshPro>().text = AvailLetter4[0];
         BottomL5Obj.GetComponent<TextMeshPro>().text = AvailLetter5[0];
         BottomL6Obj.GetComponent<TextMeshPro>().text = AvailLetter6[0];
-    
+
 
     }
 
-    
+
 
     void Update()
     {
-       SpelledWordTmPro.text = CurrentWord;
+        SpelledWordTmPro.text = CurrentWord;
 
         if (Input.GetKeyDown(RMB))
         {
             WordLen = CurrentWord.Length;
             Debug.Log(WordLen);
         }
-      
-        
+
+
         if (WordLen == 4)
         {
-            if (CurrentWord == wordl4l) 
+            if (CurrentWord == wordl4l)
             {
                 Debug.Log("Correct 4 letter");
-              
+
 
                 LetterH2.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE2.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA2.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterT2.GetComponent<TextMeshPro>().text = SelectLetter[4];
-               
-
+         
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
 
             }
-            else if(CurrentWord==word4l2)
+            else if (CurrentWord == word4l2)
             {
                 Debug.Log("Correct 4 letter");
-              
+
 
                 LetterH3.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterA3.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterT3.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE3.GetComponent<TextMeshPro>().text = SelectLetter[4];
-                
-
+               
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
             }
             else if (CurrentWord == word4l3)
             {
                 Debug.Log("Correct 4 letter");
-               
+
+
 
                 LetterH4.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE4.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA4.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterR4.GetComponent<TextMeshPro>().text = SelectLetter[4];
-        
+ 
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
+
             }
             else if (CurrentWord == word4l4)
             {
                 Debug.Log("Correct 4 letter");
-               
+
 
                 LetterH5.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterE5.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterA5.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterL5.GetComponent<TextMeshPro>().text = SelectLetter[4];
-         
+               
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
+
             }
             else if (CurrentWord == word4l5)
             {
                 Debug.Log("Correct 4 letter");
-                
 
                 LetterL6.GetComponent<TextMeshPro>().text = SelectLetter[1];
                 LetterA6.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterT6.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE6.GetComponent<TextMeshPro>().text = SelectLetter[4];
-              
+            
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
             }
-            else if(CurrentWord== word4L6)
+            else if (CurrentWord == word4L6)
             {
                 Debug.Log("Correct 4 letter");
 
@@ -220,7 +253,11 @@ public class Gm : MonoBehaviour
                 LetterA7.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterT7.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE7.GetComponent<TextMeshPro>().text = SelectLetter[4];
-            
+              
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
+
             }
             else if (CurrentWord == word4l7)
             {
@@ -230,14 +267,18 @@ public class Gm : MonoBehaviour
                 LetterA8.GetComponent<TextMeshPro>().text = SelectLetter[2];
                 LetterL8.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterE8.GetComponent<TextMeshPro>().text = SelectLetter[4];
+               
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
 
             }
-          
+
             else
             {
                 Debug.Log("Wrong 4 letter");
 
-              
+
             }
 
         }
@@ -246,7 +287,6 @@ public class Gm : MonoBehaviour
             if (CurrentWord == word5l)
             {
                 Debug.Log("Correct 5 letter");
-             
 
 
                 LetterH.GetComponent<TextMeshPro>().text = SelectLetter[1];
@@ -254,15 +294,69 @@ public class Gm : MonoBehaviour
                 LetterA.GetComponent<TextMeshPro>().text = SelectLetter[3];
                 LetterR.GetComponent<TextMeshPro>().text = SelectLetter[4];
                 LetterT.GetComponent<TextMeshPro>().text = SelectLetter[5];
-
+           
+                CurrentWord = "";
+                LetterNum = 0;
+                NumPlus();
             }
             else
             {
                 Debug.Log("Wrong 5 letter");
-               
+
 
             }
+
+        }
+
+    }
+    public void NumPlus()
+    {
+        if (!CorrectWordsList.Contains(CurrentWord))
+        {
+            CorrectWord++;
+        }
+        if (CorrectWord == TotalWord)
+        {
+            NextText.SetActive(true);
+            Debug.Log("kazandınız");
+        }
+
+    }
+    /*
+    public void AddCorrectWord(string Word)
+    {
+        if (!CorrectWordsList.Contains(Word))
+        {
+            CorrectWordsList.Add(Word);
+            Debug.Log("Doğru kelime sayısı: " + CorrectWordsList.Count);
         }
     }
+
+
+    
+public void CheckWord(string word)
+{
+   if (!CorrectWords.Contains(word))
+   {
+       CorrectWords.Add(word);
+       Debug.Log("Doğru kelime sayısı: " + CorrectWords.Count);
+   }
+}
+
+public void CheckAndAddCorrectWord(string word)
+{
+   if (!CorrectWordsList.Contains(word))
+   {
+       CorrectWordsList.Add(word);
+       Debug.Log("Correct word added: " + word);
+   }
+
+   bool IsWordCorrect(string word)
+{
+   // Burada doğru kelimelerin kontrolünü yapabilirsiniz
+   return word == "HEART" || word == "HEAT" || word == "HATE" || word == "HEAR" || word == "LATE" || word == "RATE" || word == "HEAL" || word == "TALE"; 
+}
+   */
+
 }
 
